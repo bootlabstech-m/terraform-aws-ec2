@@ -31,6 +31,10 @@ variable "subnet_id" {
   description = "VPC Subnet ID to launch in"
   type        = string
 }
+variable "security_groups" {
+  description = "VPC security group for your instance."
+  type        = string
+}
 variable "role_arn" {
   description = " The ARN of the IAM role"
   type = string

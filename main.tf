@@ -4,6 +4,7 @@ resource "aws_instance" "web-server" {
   associate_public_ip_address = true
   key_name                    = aws_key_pair.generated_key.key_name
   subnet_id                   = var.subnet_id
+  security_groups             = var.security_groups
   root_block_device {
     volume_size           = var.volume_size
     delete_on_termination = false
