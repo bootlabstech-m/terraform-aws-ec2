@@ -27,6 +27,10 @@ variable "region" {
   description = "AWS Region the instance is launched in"
   type        = string
 }
+variable "subnet_id" {
+  description = "VPC Subnet ID to launch in"
+  type        = string
+}
 variable "role_arn" {
   description = " The ARN of the IAM role"
   type = string
