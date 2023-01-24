@@ -33,7 +33,7 @@ variable "subnet_id" {
 }
 variable "security_groups" {
   description = "VPC security group for your instance."
-  type        = string
+  type        = list(string)
 }
 variable "role_arn" {
   description = " The ARN of the IAM role"
