@@ -9,7 +9,16 @@ resource "aws_instance" "web-server" {
     volume_size           = var.volume_size
     delete_on_termination = false
   }
-
+  user_data = << EOF
+#!/bin/bash
+sudo adduser admin
+sudo adduser admin --disabled-password
+usermod -a -G sudo admin
+mkdir .ssh
+chmod 700 .ssh
+touch .ssh/authorized_keys
+chmod 600 .ssh/authorized_keys
+EOF
   tags = {
     Name = var.name
   }
