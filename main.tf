@@ -9,7 +9,7 @@ resource "aws_instance" "web-server" {
     volume_size           = var.volume_size
     delete_on_termination = false
   }
-  user_data = << EOF
+  user_data = <<EOF
 #!/bin/bash
 sudo adduser admin
 sudo adduser admin --disabled-password
