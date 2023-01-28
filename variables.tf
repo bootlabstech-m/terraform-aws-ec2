@@ -31,6 +31,11 @@ variable "subnet_id" {
   description = "VPC Subnet ID to launch in"
   type        = string
 }
+variable "associate_public_ip_address" {
+  description = "whether a public ip is there for the VM."
+  type        = string
+  default     = false
+}
 variable "security_groups" {
   description = "VPC security group for your instance."
   type        = list(string)
