@@ -1,14 +1,15 @@
 resource "aws_instance" "web-server" {
-  ami                         = var.ami
-  instance_type               = var.instance_type
-  associate_public_ip_address = var.associate_public_ip_address
+  for_each                    = { for instance in var.instance_details : instance.instance_name => instance }
+  ami                         = each.value.ami
+  instance_type               = each.value.instance_type
   key_name                    = aws_key_pair.generated_key.key_name
   subnet_id                   = var.subnet_id
   security_groups             = var.security_groups
   root_block_device {
-    volume_size           = var.volume_size
+    volume_size           = each.value.volume_size
     delete_on_termination = false
   }
+
   user_data = <<EOF
 #!/bin/bash
 sudo adduser admin
@@ -19,18 +20,18 @@ chmod 700 .ssh
 touch .ssh/authorized_keys
 chmod 600 .ssh/authorized_keys
 EOF
-  tags = {
-    Name = var.name
+
+tags = {
+    Name = each.value.instance_name
   }
-  
 }
 
-resource "tls_private_key" "example" {
+resource "tls_private_key" "key" {
   algorithm = "RSA"
   rsa_bits  = 4690
 }
 
 resource "aws_key_pair" "generated_key" {
   key_name   = var.key_name
-  public_key = tls_private_key.example.public_key_openssh
+  public_key = tls_private_key.key.public_key_openssh
 }
