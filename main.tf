@@ -1,13 +1,14 @@
 resource "aws_instance" "web-server" {
+  disable_api_termination     = true
   for_each                    = { for instance in var.instance_details : instance.instance_name => instance }
   ami                         = each.value.ami
   instance_type               = each.value.instance_type
   key_name                    = aws_key_pair.generated_key.key_name
   subnet_id                   = var.subnet_id
-  security_groups             = var.security_groups
+  security_groups             = var.security_groups_id
   root_block_device {
     volume_size           = each.value.volume_size
-    delete_on_termination = false
+    delete_on_termination = var.boot_disk_delete_on_termination
   }
 
   user_data = <<EOF

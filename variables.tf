@@ -8,6 +8,12 @@ variable "instance_details" {
     instance_name  = string
   }))
 }
+
+variable "boot_disk_delete_on_termination" {
+  description = "deletion protection config of boot disk"
+  type        = bool
+}
+
 /*
 variable "ami" {
   description = "ID of AMI to use for the instance"
@@ -47,7 +53,7 @@ variable "subnet_id" {
   type        = string
 }
 
-variable "security_groups" {
+variable "security_groups_id" {
   description = "VPC security group for your instance."
   type        = list(string)
 }
