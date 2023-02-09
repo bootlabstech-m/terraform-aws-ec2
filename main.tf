@@ -5,7 +5,7 @@ resource "aws_instance" "web-server" {
   instance_type               = each.value.instance_type
   key_name                    = aws_key_pair.generated_key.key_name
   subnet_id                   = var.subnet_id
-  security_groups             = var.security_groups_id
+  vpc_security_group_ids      = var.vpc_security_group_ids 
   root_block_device {
     volume_size           = each.value.volume_size
     delete_on_termination = var.boot_disk_delete_on_termination

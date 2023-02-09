@@ -53,7 +53,7 @@ variable "subnet_id" {
   type        = string
 }
 
-variable "security_groups_id" {
+variable "vpc_security_group_ids" {
   description = "VPC security group for your instance."
   type        = list(string)
 }
