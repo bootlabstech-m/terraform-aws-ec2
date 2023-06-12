@@ -61,3 +61,7 @@ variable "role_arn" {
   description = " The ARN of the IAM role"
  type = string
 }
+variable "is_os_linux" {
+  description = "whether the OS is linux or windows"
+ type = bool
+}

@@ -7,20 +7,11 @@ resource "aws_instance" "web-server" {
   subnet_id                   = var.subnet_id
   vpc_security_group_ids      = var.vpc_security_group_ids 
   root_block_device {
-    volume_size           = each.value.volume_size
-    delete_on_termination = var.boot_disk_delete_on_termination
+    volume_size               = each.value.volume_size
+    delete_on_termination     = var.boot_disk_delete_on_termination
   }
 
-  user_data = <<EOF
-#!/bin/bash
-sudo adduser admin
-sudo adduser admin --disabled-password
-usermod -a -G sudo admin
-mkdir .ssh
-chmod 700 .ssh
-touch .ssh/authorized_keys
-chmod 600 .ssh/authorized_keys
-EOF
+  user_data = var.is_os_linux ? templatefile("${path.module}/linux_startup_script.tpl", {}) : templatefile("${path.module}/windows_startup_script.tpl", {})
 
 tags = {
     Name = each.value.instance_name
