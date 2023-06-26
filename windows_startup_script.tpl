@@ -1,3 +1,4 @@
+<powershell>
 # Change execution policy
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 $ProgressPreference = 'SilentlyContinue'
@@ -15,4 +16,5 @@ Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope Process -Force
 # Extract and install the package
 Expand-Archive .\elastic-agent-8.6.2-windows-x86_64.zip -DestinationPath .
 cd elastic-agent-8.6.2-windows-x86_64
-.\elastic-agent.exe install --url=https://6d7f607d7dde4bebb494f4442612e81c.fleet.asia-south1.gcp.elastic-cloud.com:443 --enrollment-token=S21XcTJZWUIzVFM3bm9iQVY2c246VTNVRlE1WFVROWlMSXUwWldjM2RhZw== --force --tag azure,windows
+.\elastic-agent.exe install --url=https://6d7f607d7dde4bebb494f4442612e81c.fleet.asia-south1.gcp.elastic-cloud.com:443 --enrollment-token=S21XcTJZWUIzVFM3bm9iQVY2c246VTNVRlE1WFVROWlMSXUwWldjM2RhZw== --force --tag aws,windows
+</powershell>
