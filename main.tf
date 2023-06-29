@@ -13,9 +13,9 @@ resource "aws_instance" "web-server" {
 
   user_data = var.is_os_linux ? templatefile("${path.module}/linux_startup_script.tpl", {}) : templatefile("${path.module}/windows_startup_script.tpl", {})
 
-tags = {
-    Name = each.value.instance_name
-  }
+# tags = {
+#     Name = each.value.instance_name
+#   }
 }
 
 resource "tls_private_key" "key" {
