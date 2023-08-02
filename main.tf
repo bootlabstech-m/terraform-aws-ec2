@@ -12,10 +12,10 @@ resource "aws_instance" "web-server" {
   }
 
   user_data = var.is_os_linux ? templatefile("${path.module}/linux_startup_script.tpl", {}) : templatefile("${path.module}/windows_startup_script.tpl", {})
+    lifecycle {
+    ignore_changes = [tags]
+  }
 
-# tags = {
-#     Name = each.value.instance_name
-#   }
 }
 
 resource "tls_private_key" "key" {
@@ -26,10 +26,16 @@ resource "tls_private_key" "key" {
 resource "aws_key_pair" "generated_key" {
   key_name   = var.key_name
   public_key = tls_private_key.key.public_key_openssh
+    lifecycle {
+    ignore_changes = [tags]
+  }
 }
 
 resource "aws_secretsmanager_secret" "secret_key" {
   name_prefix = var.name_prefix
+    lifecycle {
+    ignore_changes = [tags]
+  }
 }
 
 resource "aws_secretsmanager_secret_version" "secret_key_value" {
