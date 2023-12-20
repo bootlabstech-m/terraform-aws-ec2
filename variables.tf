@@ -40,7 +40,7 @@ variable "name_prefix" {
   type        = string
 }
 
-variable "key_name" {
+variable "name" {
   description = "Key name of the Key Pair to use for the instance; which can be managed using the aws_key_pair resource"
   type        = string
 }
