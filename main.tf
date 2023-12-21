@@ -21,6 +21,7 @@ resource "aws_instance" "web-server" {
       encrypted             = var.data_ebs_encryption
       delete_on_termination = var.data_disk_delete_on_termination  # Set to false if you want to retain the volume after instance termination
       volume_type           = var.data_ebs_volume_type
+      iops                  = var.data_ebs_iops
     }
   }
 

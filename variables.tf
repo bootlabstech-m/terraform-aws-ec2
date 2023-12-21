@@ -109,4 +109,8 @@ variable "data_ebs_volume_type" {
   description = "data_ebs_volume_type"
  type = string
 }
+variable "data_ebs_iops" {
+  description = "data_ebs_iops"
+ type = number
+}
 
