@@ -10,6 +10,7 @@ resource "aws_instance" "web-server" {
     volume_size               = var.root_block_volume_size
     delete_on_termination     = var.boot_disk_delete_on_termination
     encrypted                 = var.root_block_encryption
+    volume_type               = var.root_block_volume_type
   }
   # Additional EBS block device, conditionally created
   dynamic "ebs_block_device" {
@@ -19,6 +20,7 @@ resource "aws_instance" "web-server" {
       volume_size           = var.data_ebs_volume_size
       encrypted             = var.data_ebs_encryption
       delete_on_termination = var.data_disk_delete_on_termination  # Set to false if you want to retain the volume after instance termination
+      volume_type           = var.data_ebs_volume_type
     }
   }
 

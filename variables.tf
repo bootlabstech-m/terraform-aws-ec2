@@ -101,3 +101,12 @@ variable "data_disk_delete_on_termination" {
   description = "addtnl_disk_delete_on_termination"
  type = bool
 }
+variable "root_block_volume_type" {
+  description = "root_block_volume_type"
+ type = string
+}
+variable "data_ebs_volume_type" {
+  description = "data_ebs_volume_type"
+ type = string
+}
+
