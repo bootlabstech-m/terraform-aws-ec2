@@ -14,8 +14,6 @@ variable "boot_disk_delete_on_termination" {
   type        = bool
 }
 
-
-
 variable "ami" {
   description = "ID of AMI to use for the instance"
   type        = string
@@ -28,6 +26,23 @@ variable "instance_type" {
 
 variable "root_block_volume_size" {
   description = "Whether to create an instance Size of the root volume in gigabytes"
+  type        = number
+}
+
+variable "root_block_encryption" {
+  description = "root_block_encryption"
+  type        = bool
+}
+# variable "http_endpoint" {
+#   description = "http_endpoint"
+#   type        = string
+# }
+variable "http_tokens" {
+  description = "http_tokens"
+  type        = string
+}
+variable "http_put_response_hop_limit" {
+  description = "http_put_response_hop_limit"
   type        = number
 }
 
@@ -64,5 +79,25 @@ variable "role_arn" {
 }
 variable "is_os_linux" {
   description = "whether the OS is linux or windows"
+ type = bool
+}
+variable "data_block_needed" {
+  description = "addtnl_block_needed"
+ type = bool
+}
+variable "data_ebs_name" {
+  description = "ebs_block_name"
+ type = string
+}
+variable "data_ebs_volume_size" {
+  description = "additional_ebs_volume_size"
+ type = number
+}
+variable "data_ebs_encryption" {
+  description = "additional_ebs_encryption"
+ type = bool
+}
+variable "data_disk_delete_on_termination" {
+  description = "addtnl_disk_delete_on_termination"
  type = bool
 }

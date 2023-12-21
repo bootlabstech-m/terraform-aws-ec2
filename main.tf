@@ -9,13 +9,27 @@ resource "aws_instance" "web-server" {
   root_block_device {
     volume_size               = var.root_block_volume_size
     delete_on_termination     = var.boot_disk_delete_on_termination
+    encrypted                 = var.root_block_encryption
+  }
+  # Additional EBS block device, conditionally created
+  dynamic "ebs_block_device" {
+    for_each = var.data_block_needed ? [1] : []
+    content {
+      device_name           = var.data_ebs_name 
+      volume_size           = var.data_ebs_volume_size
+      encrypted             = var.data_ebs_encryption
+      delete_on_termination = var.data_disk_delete_on_termination  # Set to false if you want to retain the volume after instance termination
+    }
   }
 
   user_data = var.is_os_linux ? templatefile("${path.module}/linux_startup_script.tpl", {}) : templatefile("${path.module}/windows_startup_script.tpl", {})
     lifecycle {
     ignore_changes = [tags]
   }
-
+  metadata_options { 
+    http_tokens = var.http_tokens
+    http_put_response_hop_limit = var.http_put_response_hop_limit
+  } 
 }
 
 resource "tls_private_key" "key" {
