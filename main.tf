@@ -49,7 +49,7 @@ resource "aws_key_pair" "generated_key" {
 }
 
 resource "aws_secretsmanager_secret" "secret_key" {
-  name_prefix = var.name_prefix
+  name_prefix = var.name
     lifecycle {
     ignore_changes = [tags]
   }
