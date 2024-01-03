@@ -83,34 +83,36 @@ variable "is_os_linux" {
 }
 variable "data_block_needed" {
   description = "addtnl_block_needed"
- type = bool
+  type = bool
 }
 variable "data_ebs_name" {
   description = "ebs_block_name"
- type = string
+  type = string
 }
 variable "data_ebs_volume_size" {
   description = "additional_ebs_volume_size"
- type = number
+  type = number
+  default = null
 }
 variable "data_ebs_encryption" {
   description = "additional_ebs_encryption"
- type = bool
+  type = bool
 }
 variable "data_disk_delete_on_termination" {
   description = "addtnl_disk_delete_on_termination"
- type = bool
+  type = bool
 }
 variable "root_block_volume_type" {
   description = "root_block_volume_type"
- type = string
+  type = string
 }
 variable "data_ebs_volume_type" {
   description = "data_ebs_volume_type"
- type = string
+  type = string
 }
 variable "data_ebs_iops" {
   description = "data_ebs_iops"
- type = number
+  type = number
+  default = null
 }
 
