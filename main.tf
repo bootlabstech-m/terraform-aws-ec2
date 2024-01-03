@@ -1,6 +1,9 @@
 resource "aws_instance" "web-server" {
   disable_api_termination     = true
-  # for_each                    = { for instance in var.instance_details : instance.instance_name => instance }
+    tags = {
+    Name = var.name
+  }
+
   ami                         = var.ami
   instance_type               = var.instance_type
   key_name                    = aws_key_pair.generated_key.key_name
