@@ -19,12 +19,12 @@ resource "aws_instance" "web-server" {
   dynamic "ebs_block_device" {
     for_each = var.data_block_needed ? [1] : []
     content {
-      device_name           = var.data_block_needed ? var.data_ebs_name : ""
-      volume_size           = var.data_block_needed ? var.data_ebs_volume_size : null
-      encrypted             = var.data_block_needed ? var.data_ebs_encryption : null
-      delete_on_termination = var.data_block_needed ? var.data_disk_delete_on_termination : null
-      volume_type           = var.data_block_needed ? var.data_ebs_volume_type : ""
-      iops                  = var.data_block_needed ? var.data_ebs_iops : null
+      device_name           = var.data_ebs_name 
+      volume_size           = var.data_ebs_volume_size 
+      encrypted             = var.data_ebs_encryption 
+      delete_on_termination = var.data_disk_delete_on_termination 
+      volume_type           = var.data_ebs_volume_type 
+      iops                  = var.data_ebs_iops
     }
   }
 
