@@ -25,6 +25,7 @@ resource "aws_instance" "web-server" {
       delete_on_termination = var.data_disk_delete_on_termination 
       volume_type           = var.data_ebs_volume_type 
       iops                  = var.data_ebs_iops
+      kms_key_id = var.kms_key_id
     }
   }
 

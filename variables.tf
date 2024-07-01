@@ -147,4 +147,9 @@ variable "data_ebs_iops" {
   type = number
   default = 0
 }
+variable "kms_key_id" {
+  description = "kms key for encrption and decription"
+  type = string
+  
+}
 
