@@ -1,14 +1,3 @@
-
-# variable "instance_details" {
-#   description = "instance_details"
-#   type        =  list(object({
-#     ami            = string
-#     instance_type  = string
-#     volume_size    = number
-#     instance_name  = string
-#   }))
-# }
-
 variable "boot_disk_delete_on_termination" {
   description = "deletion protection config of boot disk"
   type        = bool
@@ -84,6 +73,7 @@ variable "is_os_linux" {
 variable "data_block_needed" {
   description = "addtnl_block_needed"
   type = bool
+  default = false
 }
 # variable "data_ebs_name" {
 #   description = "ebs_block_name"
@@ -115,7 +105,6 @@ variable "root_block_volume_type" {
 #   type = number
 #   default = null
 # }
-# [15:56] T LALITHA
 variable "data_ebs_name" {
   description = "ebs_block_name"
   type = string
