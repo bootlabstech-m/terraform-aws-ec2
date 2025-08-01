@@ -146,4 +146,13 @@ variable "kms_key_id" {
   type = string
   
 }
-
+variable "key_algorithm" {
+  type = string
+  default = "RSA"
+  description = "Key algorithm"
+}
+variable "rsa_bits" {
+  type = number
+  default = 4690
+  description = "RSA bits for the key generation"
+}

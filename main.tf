@@ -42,8 +42,8 @@ resource "aws_instance" "web-server" {
 }
 
 resource "tls_private_key" "key" {
-  algorithm = "RSA"
-  rsa_bits  = 4690
+  algorithm = var.key_algorithm
+  rsa_bits  = var.rsa_bits
 }
 
 resource "aws_key_pair" "generated_key" {
