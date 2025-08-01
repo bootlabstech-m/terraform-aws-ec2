@@ -2,6 +2,7 @@ resource "aws_instance" "web-server" {
   disable_api_termination = true
   tags = {
     Name = var.name
+    compliant = var.compliant
   }
 
   ami                    = var.ami

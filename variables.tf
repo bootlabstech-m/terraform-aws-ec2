@@ -43,7 +43,11 @@ variable "name" {
   description = "Key name of the Key Pair to use for the instance; which can be managed using the aws_key_pair resource"
   type        = string
 }
-
+variable "compliant" {
+  type = bool
+  default = true
+  description = "Tag to ensure compliance"
+}
 variable "key_name" {
   description = "Key name of the Key Pair to use for the instance; which can be managed using the aws_key_pair resource"
   type        = string
@@ -53,6 +57,7 @@ variable "region" {
   description = "AWS Region the instance is launched in"
   type        = string
 }
+
 variable "subnet_id" {
   description = "VPC Subnet ID to launch in"
   type        = string
