@@ -44,8 +44,8 @@ variable "name" {
   type        = string
 }
 variable "compliant" {
-  type = bool
-  default = true
+  type        = bool
+  default     = true
   description = "Tag to ensure compliance"
 }
 variable "key_name" {
@@ -69,16 +69,16 @@ variable "vpc_security_group_ids" {
 }
 variable "role_arn" {
   description = " The ARN of the IAM role"
- type = string
+  type        = string
 }
 variable "is_os_linux" {
   description = "whether the OS is linux or windows"
- type = bool
+  type        = bool
 }
 variable "data_block_needed" {
   description = "addtnl_block_needed"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 # variable "data_ebs_name" {
 #   description = "ebs_block_name"
@@ -99,7 +99,7 @@ variable "data_block_needed" {
 # }
 variable "root_block_volume_type" {
   description = "root_block_volume_type"
-  type = string
+  type        = string
 }
 # variable "data_ebs_volume_type" {
 #   description = "data_ebs_volume_type"
@@ -112,47 +112,47 @@ variable "root_block_volume_type" {
 # }
 variable "data_ebs_name" {
   description = "ebs_block_name"
-  type = string
-  default = ""
+  type        = string
+  default     = ""
 }
 variable "data_ebs_volume_size" {
   description = "additional_ebs_volume_size"
-  type = number
-  default = 0
+  type        = number
+  default     = 0
 }
 variable "data_ebs_encryption" {
   description = "additional_ebs_encryption"
-  type = bool
-  default = true
+  type        = bool
+  default     = true
 }
 variable "data_disk_delete_on_termination" {
   description = "addtnl_disk_delete_on_termination"
-  type = bool
-  default = true
+  type        = bool
+  default     = true
 }
- 
+
 variable "data_ebs_volume_type" {
   description = "data_ebs_volume_type"
-  type = string
-  default = "gp3"
+  type        = string
+  default     = "gp3"
 }
 variable "data_ebs_iops" {
   description = "data_ebs_iops"
-  type = number
-  default = 0
+  type        = number
+  default     = 0
 }
 variable "kms_key_id" {
   description = "kms key for encrption and decription"
-  type = string
-  
+  type        = string
+
 }
 variable "key_algorithm" {
-  type = string
-  default = "RSA"
+  type        = string
+  default     = "RSA"
   description = "Key algorithm"
 }
 variable "rsa_bits" {
-  type = number
-  default = 4690
+  type        = number
+  default     = 4690
   description = "RSA bits for the key generation"
 }

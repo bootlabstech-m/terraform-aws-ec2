@@ -1,7 +1,7 @@
 resource "aws_instance" "web-server" {
   disable_api_termination = true
   tags = {
-    Name = var.name
+    Name      = var.name
     compliant = var.compliant
   }
 
@@ -15,6 +15,7 @@ resource "aws_instance" "web-server" {
     delete_on_termination = var.boot_disk_delete_on_termination
     encrypted             = var.root_block_encryption
     volume_type           = var.root_block_volume_type
+    kms_key_id            = var.kms_key_id
   }
   # Additional EBS block device, conditionally created
   dynamic "ebs_block_device" {
