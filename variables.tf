@@ -141,11 +141,12 @@ variable "data_ebs_iops" {
   type        = number
   default     = 0
 }
-variable "kms_key_id" {
-  description = "kms key for encrption and decription"
+variable "kms_key_alias" {
   type        = string
-
+  description = "ARN of the existing Customer Managed KMS Key used to encrypt the RDS database storage"
+  default     = "alias/mm_cmk_kms"
 }
+
 variable "key_algorithm" {
   type        = string
   default     = "RSA"

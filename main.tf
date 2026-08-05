@@ -1,9 +1,18 @@
+######################################
+# to fetch existing key automatically using Key Alias
+######################################
+
+data "aws_kms_key" "existing" {
+  key_id = var.kms_key_alias
+}
+
 resource "aws_instance" "web-server" {
   disable_api_termination = true
   tags = {
     Name      = var.name
     compliant = var.compliant
   }
+
 
   ami                    = var.ami
   instance_type          = var.instance_type
@@ -15,7 +24,7 @@ resource "aws_instance" "web-server" {
     delete_on_termination = var.boot_disk_delete_on_termination
     encrypted             = var.root_block_encryption
     volume_type           = var.root_block_volume_type
-    kms_key_id            = var.kms_key_id
+    kms_key_id            = data.aws_kms_key.existing.arn
   }
   # Additional EBS block device, conditionally created
   dynamic "ebs_block_device" {
@@ -27,7 +36,7 @@ resource "aws_instance" "web-server" {
       delete_on_termination = var.data_disk_delete_on_termination
       volume_type           = var.data_ebs_volume_type
       iops                  = var.data_ebs_iops
-      kms_key_id            = var.kms_key_id
+      kms_key_id            = data.aws_kms_key.existing.arn
     }
   }
 
